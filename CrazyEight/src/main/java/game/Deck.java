@@ -10,15 +10,13 @@ import java.util.Arrays;
 
 public class Deck {
 
-    //protected Queue<Card> deck = deckShuffledAsQueue(deckGenerator());
-    private static final String [] names = {"ACE", "KING", "QUEEN", "JACK", "TEN", "NINE", "EIGHT", "SEVEN","SIindex", "FIVE", "FOUR", "THREE", "TWO"}; // les 8 valeurs constantes
+    private static LinkedList<Card> deck;
+    private static final String [] names = {"ACE", "KING", "QUEEN", "JACK", "TEN", "NINE", "EIGHT", "SEVEN","SIX", "FIVE", "FOUR", "THREE", "TWO"}; // les 8 valeurs constantes
     private static final String [] colors = {"HEARTS", "DIAMONDS", "CLUBS", "SPADES"}; // les 4 couleurs constantes
     private static Random random = new Random();
 
     
-    
-    
-    protected static LinkedList<Card> deckGenerator(){ // création des 32 cartes et ne retourne rien
+    public static LinkedList<Card> deckCreation(){
         LinkedList<Card> deck = new LinkedList<Card>();
         for(String nom : names){ // parcours des valeurs constantes
             for(String couleur : colors){ 
@@ -26,21 +24,22 @@ public class Deck {
                 deck.add(carte); // et l'ajouter au deck
             }
         }
-        return deck;
-    }
-
-    
-    protected static PriorityQueue<Card> deckShuffledAsQueue(LinkedList<Card> deck){
-        PriorityQueue<Card> finalDeck = new PriorityQueue<Card>(); //empty
+        LinkedList<Card> finalDeck = new LinkedList<Card>(); //empty
         while(!deck.isEmpty()){
-            int index = random.nextInt(deck.size()-1);
+            int index = random.nextInt(deck.size());
             finalDeck.add(deck.get(index));
             deck.remove(index);
         } 
+        deck = finalDeck;
         return finalDeck;
     }
 
+    protected static Card getTopCard(){
+        Card topCard = deck.get(deck.size()-1);
+        deck.remove(deck.size()-1);
 
+        return topCard;
+    }
    
 
 

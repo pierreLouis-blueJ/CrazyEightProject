@@ -17,13 +17,7 @@ public class DeckTest {
 
     
     /** deckGenerator Tests */
-    @Test
-    void deckGeneratorHas52Cards() {
-        Deck newDeck = new Deck();
-        
-        assertEquals(52, newDeck.deckGenerator().size());
-
-    }
+    
 
     @Test
     void isHeartSevenExist(){
@@ -31,22 +25,21 @@ public class DeckTest {
         
         Card HeartSeven = new Card("SEVEN", "HEARTS");
 
-        assertTrue(newDeck.deckGenerator().contains(HeartSeven));
+        assertTrue(newDeck.deckCreation().contains(HeartSeven));
     }
 
     @Test
     void cardsAreUnique(){
-        Deck newDeck = new Deck();
-        Set<Card> s =new HashSet<Card>((newDeck.deckGenerator()));
+        Deck newDeck = new Deck(); //instanciation
+        Set<Card> s =new HashSet<Card>((newDeck.deckCreation()));
 
-        assertTrue(s.size()== newDeck.deckGenerator().size());
+        assertTrue(s.size()== newDeck.deckCreation().size());
     }
 
     @Test
-    void sameSizeBetweenListAndQueue() {
+    void deckHas52Cards(){
         Deck newDeck = new Deck();
-        
-        assertEquals(52, deck.size());
+        assertEquals(52, newDeck.deckCreation().size());
+    }
 
-    } 
 }
