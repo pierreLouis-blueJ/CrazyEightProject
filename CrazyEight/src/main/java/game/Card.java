@@ -1,25 +1,25 @@
 package game;
 
 public class Card {
-    private String nom; //attribut nom de la carte
-    private String couleur; //attribut couleur de la carte
+    private String name; //attribut name de la carte
+    private String color; //attribut color de la carte
     
     protected Card(String name, String color){ //constructeur qui récupère les informations données par les paramètres
-        this.nom = name; 
-        this.couleur = color;
+        this.name = name; 
+        this.color = color;
     }
 
-    protected static String getNom(Card carte){
-        return carte.nom;
+    protected static String getName(Card carte){
+        return carte.name;
     }
 
-    protected static String getCouleur(Card carte){
-        return carte.couleur;
+    protected static String getColor(Card carte){
+        return carte.color;
     }
 
     @Override
     public boolean equals(Object card){
-        if(getCouleur((Card)card).equals(this.getCouleur(this)) && getNom((Card)card).equals(this.getNom(this))){
+        if(getColor((Card)card).equals(this.getColor(this)) && getName((Card)card).equals(this.getName(this))){
             return true;
         }
         return false;
